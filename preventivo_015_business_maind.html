@@ -2,9 +2,13 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Preventivo N 015 – AP media</title>
   <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -15,50 +19,47 @@
     }
 
     .page {
-      width: 794px;
-      min-height: 1123px;
-      margin: 0 auto;
-      padding: 36px 40px 40px;
-      display: flex;
-      flex-direction: column;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 0 0 10mm 0;
     }
 
     /* ── HEADER ── */
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
       background: #1e2d4a;
       color: #fff;
-      padding: 22px 28px 18px;
-      margin-bottom: 20px;
-    }
-    .header .brand h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
-    .header .brand p  { font-size: 10px; color: #b0c0d8; margin-top: 3px; }
-    .header .doc-info { text-align: right; }
-    .header .doc-info .doc-title { font-size: 20px; font-weight: 700; letter-spacing: 2px; }
-    .header .doc-info .doc-number { font-size: 11px; color: #b0c0d8; margin-top: 4px; }
-
-    /* ── INFO ROW ── */
-    .info-row {
-      display: flex;
-      gap: 16px;
+      padding: 20px 28px 16px;
       margin-bottom: 18px;
     }
+    .header table { width: 100%; border-collapse: collapse; }
+    .header td { vertical-align: top; padding: 0; border: none; background: transparent; }
+    .header .brand h1 { font-size: 24px; font-weight: 700; letter-spacing: 1px; color: #fff; }
+    .header .brand p  { font-size: 10px; color: #b0c0d8; margin-top: 3px; }
+    .header .doc-info { text-align: right; }
+    .header .doc-info .doc-title  { font-size: 20px; font-weight: 700; letter-spacing: 2px; color: #fff; }
+    .header .doc-info .doc-number { font-size: 11px; color: #b0c0d8; margin-top: 4px; }
+
+    /* ── PAGE BODY ── */
+    .body { padding: 0 28px; }
+
+    /* ── INFO ROW ── */
+    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    .info-table td { vertical-align: top; padding: 0; border: none; }
+    .info-table td:first-child { padding-right: 12px; }
     .info-box {
       border: 1px solid #d8dde6;
       border-radius: 4px;
-      padding: 12px 16px;
-      flex: 1;
+      padding: 11px 14px;
+      width: 100%;
     }
-    .info-box .label { font-size: 9px; text-transform: uppercase; color: #888; letter-spacing: 1px; margin-bottom: 6px; }
-    .info-box .value { font-size: 13px; font-weight: 700; }
-    .info-box .sub   { font-size: 11px; color: #555; margin-top: 3px; }
-    .info-box.details .row { font-size: 11px; line-height: 1.8; }
-    .info-box.details .row strong { font-weight: 700; }
+    .info-box .lbl { font-size: 9px; text-transform: uppercase; color: #888; letter-spacing: 1px; margin-bottom: 5px; }
+    .info-box .val { font-size: 13px; font-weight: 700; color: #222; }
+    .info-box .sub { font-size: 11px; color: #555; margin-top: 2px; }
+    .info-box .drow { font-size: 11px; line-height: 1.9; color: #222; }
+    .info-box .drow strong { font-weight: 700; }
 
-    /* ── INTRO TEXT ── */
-    .intro { font-size: 10px; font-style: italic; color: #555; margin-bottom: 22px; line-height: 1.6; }
+    /* ── INTRO ── */
+    .intro { font-size: 10px; font-style: italic; color: #555; margin-bottom: 20px; line-height: 1.6; }
 
     /* ── SECTION TITLE ── */
     .section-title {
@@ -67,99 +68,95 @@
       color: #1e2d4a;
       border-bottom: 2px solid #1e2d4a;
       padding-bottom: 4px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     /* ── STAT BOXES ── */
-    .stat-row {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 26px;
-    }
+    .stat-table { width: 100%; border-collapse: collapse; margin-bottom: 22px; }
+    .stat-table td { vertical-align: top; padding: 0; border: none; }
+    .stat-table td:not(:last-child) { padding-right: 10px; }
     .stat-box {
-      flex: 1;
       background: #dce7f5;
       border-radius: 4px;
       text-align: center;
-      padding: 18px 8px 14px;
+      padding: 16px 8px 12px;
+      width: 100%;
     }
-    .stat-box .num  { font-size: 38px; font-weight: 700; color: #1e2d4a; line-height: 1; }
+    .stat-box .num  { font-size: 36px; font-weight: 700; color: #1e2d4a; line-height: 1; }
     .stat-box .desc { font-size: 10px; color: #444; margin-top: 6px; }
 
-    /* ── TABLE ── */
-    table {
+    /* ── DATA TABLES ── */
+    .data-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
     }
-    table thead tr {
-      background: #1e2d4a;
+    .data-table thead tr { background: #1e2d4a; }
+    .data-table thead th {
       color: #fff;
-    }
-    table thead th {
-      padding: 9px 12px;
+      padding: 8px 12px;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.8px;
       text-transform: uppercase;
       text-align: left;
+      border: none;
     }
-    table thead th:last-child { text-align: right; }
-    table tbody tr { border-bottom: 1px solid #e5e9f0; }
-    table tbody tr:last-child { border-bottom: none; }
-    table tbody td {
-      padding: 10px 12px;
+    .data-table thead th.r { text-align: right; }
+    .data-table tbody tr { border-bottom: 1px solid #e5e9f0; }
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody td {
+      padding: 9px 12px;
       vertical-align: top;
+      border: none;
+      background: #fff;
+      color: #222;
     }
-    table tbody td:first-child { font-weight: 700; }
-    table tbody td:last-child  { text-align: right; white-space: nowrap; }
+    .data-table tbody td.bold { font-weight: 700; }
+    .data-table tbody td.r    { text-align: right; white-space: nowrap; }
 
-    /* riepilogo totale row */
     .totale-row td {
-      background: #1e2d4a;
-      color: #fff;
-      font-weight: 700;
+      background: #1e2d4a !important;
+      color: #fff !important;
+      font-weight: 700 !important;
       font-size: 13px;
-      padding: 11px 12px;
+      padding: 10px 12px;
       border-bottom: none !important;
     }
+    .totale-row td.r { text-align: right; white-space: nowrap; }
 
     /* ── NOTE ── */
-    .note-title { font-size: 13px; font-weight: 700; color: #1e2d4a; margin-bottom: 8px; }
-    .note ul    { list-style: none; padding: 0; }
-    .note ul li { font-size: 10px; color: #444; line-height: 1.7; padding-left: 10px; position: relative; }
-    .note ul li::before { content: "•"; position: absolute; left: 0; }
-
-    /* ── FOOTER ── */
-    .signatures {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 32px;
-      padding-top: 16px;
-      border-top: 1px solid #ccc;
+    .note-title { font-size: 13px; font-weight: 700; color: #1e2d4a; margin-bottom: 7px; }
+    .note-list { list-style: none; padding: 0; margin-bottom: 28px; }
+    .note-list li {
+      font-size: 10px; color: #444; line-height: 1.7;
+      padding-left: 12px; position: relative;
     }
-    .signatures .sig-block { width: 45%; }
-    .signatures .sig-block .sig-name  { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
-    .signatures .sig-block .sig-sub   { font-size: 10px; color: #555; }
-    .signatures .sig-block .sig-line  {
-      font-size: 10px; color: #555; margin-top: 18px;
+    .note-list li::before { content: "\2022"; position: absolute; left: 0; }
+
+    /* ── FIRME ── */
+    .sig-table { width: 100%; border-collapse: collapse; margin-top: 28px; }
+    .sig-table td { vertical-align: top; width: 50%; border: none; padding: 0; }
+    .sig-top { border-top: 1px solid #ccc; padding-top: 10px; }
+    .sig-name { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+    .sig-sub  { font-size: 10px; color: #555; }
+    .sig-line {
+      font-size: 10px; color: #555; margin-top: 22px;
       border-bottom: 1px solid #999; padding-bottom: 2px;
+      width: 90%;
     }
 
+    /* ── PAGE FOOTER ── */
     .page-footer {
-      margin-top: auto;
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
+      margin-top: 24px;
+      padding: 8px 28px 0;
+      border-top: 1px solid #e0e0e0;
       font-size: 9px;
       color: #888;
-      border-top: 1px solid #e0e0e0;
     }
-
-    @media print {
-      body { background: #fff; }
-      .page { margin: 0; padding: 24px 32px 32px; }
-    }
+    .pf-table { width: 100%; border-collapse: collapse; }
+    .pf-table td { border: none; padding: 0; background: transparent; }
+    .pf-table td.r { text-align: right; }
   </style>
 </head>
 <body>
@@ -167,149 +164,166 @@
 
   <!-- HEADER -->
   <div class="header">
-    <div class="brand">
-      <h1>AP media</h1>
-      <p>Comunicazione &amp; Marketing Digitale</p>
-    </div>
-    <div class="doc-info">
-      <div class="doc-title">PREVENTIVO</div>
-      <div class="doc-number">N 015 &ndash; Maggio 2026</div>
-    </div>
+    <table><tr>
+      <td class="brand">
+        <h1>AP media</h1>
+        <p>Comunicazione &amp; Marketing Digitale</p>
+      </td>
+      <td class="doc-info">
+        <div class="doc-title">PREVENTIVO</div>
+        <div class="doc-number">N 015 &ndash; Maggio 2026</div>
+      </td>
+    </tr></table>
   </div>
 
-  <!-- INFO ROW -->
-  <div class="info-row">
-    <div class="info-box">
-      <div class="label">Destinatario</div>
-      <div class="value">Business Maind</div>
-      <div class="sub">Prodotto: Stillwater</div>
-    </div>
-    <div class="info-box details">
-      <div class="label">Dettagli</div>
-      <div class="row">Data emissione: <strong>15 Maggio 2026</strong></div>
-      <div class="row">Periodo: <strong>Maggio &ndash; Luglio 2026 (3 mesi)</strong></div>
-      <div class="row">Validita: <strong>30 giorni</strong></div>
-    </div>
-  </div>
+  <div class="body">
 
-  <!-- INTRO -->
-  <p class="intro">
-    Preventivo autonomo per la produzione di contenuti video e statici per la campagna Meta Ads di Stillwater.
-    Non comprende il compenso mensile per la gestione della campagna.
-  </p>
+    <!-- INFO ROW -->
+    <table class="info-table"><tr>
+      <td style="width:48%">
+        <div class="info-box">
+          <div class="lbl">Destinatario</div>
+          <div class="val">Business Maind</div>
+          <div class="sub">Prodotto: Stillwater</div>
+        </div>
+      </td>
+      <td style="width:52%">
+        <div class="info-box">
+          <div class="lbl">Dettagli</div>
+          <div class="drow">Data emissione: <strong>15 Maggio 2026</strong></div>
+          <div class="drow">Periodo: <strong>Maggio &ndash; Luglio 2026 (3 mesi)</strong></div>
+          <div class="drow">Validita: <strong>30 giorni</strong></div>
+        </div>
+      </td>
+    </tr></table>
 
-  <!-- STRUTTURA MENSILE -->
-  <div class="section-title">Struttura mensile dei contenuti</div>
-  <div class="stat-row">
-    <div class="stat-box">
-      <div class="num">1</div>
-      <div class="desc">giornata di ripresa / mese</div>
-    </div>
-    <div class="stat-box">
-      <div class="num">3</div>
-      <div class="desc">video / mese</div>
-    </div>
-    <div class="stat-box">
-      <div class="num">3</div>
-      <div class="desc">creativita statiche / mese</div>
-    </div>
-  </div>
+    <!-- INTRO -->
+    <p class="intro">Preventivo autonomo per la produzione di contenuti video e statici per la campagna Meta Ads di Stillwater. Non comprende il compenso mensile per la gestione della campagna.</p>
 
-  <!-- SERVIZI -->
-  <div class="section-title">Dettaglio servizi inclusi</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:30%">Servizio</th>
-        <th>Descrizione</th>
-        <th>QTA/MESE</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Scrittura Script Video</td>
-        <td>Ideazione e stesura testi per ogni video</td>
-        <td>3 script</td>
-      </tr>
-      <tr>
-        <td>Supervisione Riprese</td>
-        <td>Gestione inquadrature e qualita sul set</td>
-        <td>1 giornata</td>
-      </tr>
-      <tr>
-        <td>Editing Video</td>
-        <td>Post-produzione e montaggio dei video</td>
-        <td>3 video</td>
-      </tr>
-      <tr>
-        <td>Creazione Creativita Statiche</td>
-        <td>Grafiche per ads statici del prodotto</td>
-        <td>3 immagini</td>
-      </tr>
-      <tr>
-        <td>Upload in Campagna Meta</td>
-        <td>Inserimento di tutti i contenuti negli ads</td>
-        <td>incluso</td>
-      </tr>
-    </tbody>
-  </table>
+    <!-- STRUTTURA MENSILE -->
+    <div class="section-title">Struttura mensile dei contenuti</div>
+    <table class="stat-table"><tr>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">1</div>
+          <div class="desc">giornata di ripresa / mese</div>
+        </div>
+      </td>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">3</div>
+          <div class="desc">video / mese</div>
+        </div>
+      </td>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">3</div>
+          <div class="desc">creativita statiche / mese</div>
+        </div>
+      </td>
+    </tr></table>
 
-  <!-- RIEPILOGO -->
-  <div class="section-title">Riepilogo economico</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:30%">Voce</th>
-        <th>Dettaglio</th>
-        <th>Importo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Produzione contenuti mensile</td>
-        <td>Script + supervisione + editing + statiche + upload</td>
-        <td>&euro;100,00</td>
-      </tr>
-      <tr>
-        <td>Durata del contratto</td>
-        <td>Maggio / Giugno / Luglio 2026</td>
-        <td>x 3</td>
-      </tr>
-      <tr class="totale-row">
-        <td></td>
-        <td style="text-align:right">TOTALE TRIMESTRALE</td>
-        <td>&euro;300,00</td>
-      </tr>
-    </tbody>
-  </table>
+    <!-- SERVIZI -->
+    <div class="section-title">Dettaglio servizi inclusi</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Servizio</th>
+          <th>Descrizione</th>
+          <th class="r">QTA/MESE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">Scrittura Script Video</td>
+          <td>Ideazione e stesura testi per ogni video</td>
+          <td class="r">3 script</td>
+        </tr>
+        <tr>
+          <td class="bold">Supervisione Riprese</td>
+          <td>Gestione inquadrature e qualita sul set</td>
+          <td class="r">1 giornata</td>
+        </tr>
+        <tr>
+          <td class="bold">Editing Video</td>
+          <td>Post-produzione e montaggio dei video</td>
+          <td class="r">3 video</td>
+        </tr>
+        <tr>
+          <td class="bold">Creazione Creativita Statiche</td>
+          <td>Grafiche per ads statici del prodotto</td>
+          <td class="r">3 immagini</td>
+        </tr>
+        <tr>
+          <td class="bold">Upload in Campagna Meta</td>
+          <td>Inserimento di tutti i contenuti negli ads</td>
+          <td class="r">incluso</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <!-- NOTE -->
-  <div class="note">
+    <!-- RIEPILOGO -->
+    <div class="section-title">Riepilogo economico</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Voce</th>
+          <th>Dettaglio</th>
+          <th class="r">Importo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">Produzione contenuti mensile</td>
+          <td>Script + supervisione + editing + statiche + upload</td>
+          <td class="r">&euro;100,00</td>
+        </tr>
+        <tr>
+          <td class="bold">Durata del contratto</td>
+          <td>Maggio / Giugno / Luglio 2026</td>
+          <td class="r">x 3</td>
+        </tr>
+        <tr class="totale-row">
+          <td></td>
+          <td class="r">TOTALE TRIMESTRALE</td>
+          <td class="r">&euro;300,00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- NOTE -->
     <div class="note-title">Note</div>
-    <ul>
+    <ul class="note-list">
       <li>Il presente preventivo e separato e aggiuntivo rispetto al compenso mensile per la gestione della campagna Meta Ads.</li>
       <li>La giornata di ripresa prevede la produzione di 3 video. AP media gestisce la supervisione delle inquadrature senza occuparsi direttamente delle riprese.</li>
       <li>Sono incluse 3 creativita statiche al mese (grafiche per ads immagine).</li>
       <li>Il preventivo e valido per 30 giorni dalla data di emissione.</li>
     </ul>
-  </div>
 
-  <!-- FIRME -->
-  <div class="signatures">
-    <div class="sig-block">
-      <div class="sig-name">AP media</div>
-      <div class="sig-sub">Alessandro Pacelli</div>
-    </div>
-    <div class="sig-block">
-      <div class="sig-name">Accettazione cliente</div>
-      <div class="sig-line">Firma e data: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-    </div>
-  </div>
+    <!-- FIRME -->
+    <table class="sig-table"><tr>
+      <td style="padding-right:20px">
+        <div class="sig-top">
+          <div class="sig-name">AP media</div>
+          <div class="sig-sub">Alessandro Pacelli</div>
+        </div>
+      </td>
+      <td>
+        <div class="sig-top">
+          <div class="sig-name">Accettazione cliente</div>
+          <div class="sig-line">Firma e data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+      </td>
+    </tr></table>
+
+  </div><!-- /body -->
 
   <!-- PAGE FOOTER -->
   <div class="page-footer">
-    <span>AP media &ndash; alessandropacelli717@gmail.com</span>
-    <span>Pagina 1 di 1</span>
+    <table class="pf-table"><tr>
+      <td>AP media &ndash; alessandropacelli717@gmail.com</td>
+      <td class="r">Pagina 1 di 1</td>
+    </tr></table>
   </div>
 
 </div>
