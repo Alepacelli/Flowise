@@ -73,18 +73,23 @@
 
     /* ── STAT BOXES ── */
     .stat-table { width: 100%; border-collapse: collapse; margin-bottom: 22px; }
-    .stat-table td { vertical-align: top; padding: 0; border: none; }
+    .stat-table td { vertical-align: top; padding: 0; border: none; height: 90px; }
     .stat-table td:not(:last-child) { padding-right: 10px; }
     .stat-box {
       background: #dce7f5;
       border-radius: 4px;
-      text-align: center;
-      padding: 16px 8px 12px;
       width: 100%;
+      height: 90px;
+      display: table;
     }
-    .stat-box .num  { font-size: 36px; font-weight: 700; color: #1e2d4a; line-height: 1; }
-    .stat-box .num-sm { font-size: 24px; font-weight: 700; color: #1e2d4a; line-height: 1; }
-    .stat-box .desc { font-size: 10px; color: #444; margin-top: 6px; }
+    .stat-inner {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      padding: 0 10px;
+    }
+    .stat-box .num  { font-size: 34px; font-weight: 700; color: #1e2d4a; line-height: 1; }
+    .stat-box .desc { font-size: 10px; color: #444; margin-top: 7px; }
 
     /* ── DATA TABLES ── */
     .data-table {
@@ -203,7 +208,7 @@
           <div class="lbl">Dettagli</div>
           <div class="drow">Data emissione: <strong>25 Giugno 2026</strong></div>
           <div class="drow">Avvio progetto: <strong>Luglio 2026</strong></div>
-          <div class="drow">Validita: <strong>30 giorni</strong></div>
+          <div class="drow">Validit&agrave;: <strong>30 giorni</strong></div>
         </div>
       </td>
     </tr></table>
@@ -216,25 +221,31 @@
     <table class="stat-table"><tr>
       <td style="width:33.3%">
         <div class="stat-box">
-          <div class="num">1</div>
-          <div class="desc">sito web professionale</div>
+          <div class="stat-inner">
+            <div class="num">1</div>
+            <div class="desc">sito web professionale</div>
+          </div>
         </div>
       </td>
       <td style="width:33.3%">
         <div class="stat-box">
-          <div class="num-sm">&euro;700</div>
-          <div class="desc">creazione (una tantum)</div>
+          <div class="stat-inner">
+            <div class="num">&euro;700</div>
+            <div class="desc">creazione (una tantum)</div>
+          </div>
         </div>
       </td>
       <td style="width:33.3%">
         <div class="stat-box">
-          <div class="num-sm">&euro;50</div>
-          <div class="desc">canone mensile</div>
+          <div class="stat-inner">
+            <div class="num">&euro;50</div>
+            <div class="desc">fee mensile</div>
+          </div>
         </div>
       </td>
     </tr></table>
 
-    <!-- SERVIZI CREAZIONE -->
+    <!-- SERVIZI -->
     <div class="section-title">Dettaglio servizi inclusi</div>
     <table class="data-table">
       <thead>
@@ -262,12 +273,12 @@
         </tr>
         <tr>
           <td class="bold">SEO on-page</td>
-          <td>Ottimizzazione struttura, meta tag e velocita di caricamento</td>
+          <td>Ottimizzazione struttura, meta tag e velocit&agrave; di caricamento</td>
           <td class="r">una tantum</td>
         </tr>
         <tr>
           <td class="bold">Monitoraggio performance</td>
-          <td>Controllo mensile analytics, uptime e velocita del sito</td>
+          <td>Controllo mensile analytics, uptime e velocit&agrave; del sito</td>
           <td class="r">mensile</td>
         </tr>
         <tr>
@@ -300,18 +311,18 @@
           <td class="r">&euro;700,00</td>
         </tr>
         <tr>
-          <td class="bold">Canone mensile</td>
+          <td class="bold">Fee mensile</td>
           <td>Monitoraggio + manutenzione + backup e sicurezza</td>
           <td class="r">&euro;50,00 / mese</td>
         </tr>
         <tr class="subtotale-row">
           <td></td>
-          <td class="r">TOTALE PRIMO MESE</td>
-          <td class="r">&euro;750,00</td>
+          <td class="r">TOTALE CREAZIONE</td>
+          <td class="r">&euro;700,00</td>
         </tr>
         <tr class="totale-row">
           <td></td>
-          <td class="r">DAL SECONDO MESE</td>
+          <td class="r">FEE MENSILE DAL MESE SUCCESSIVO</td>
           <td class="r">&euro;50,00 / mese</td>
         </tr>
       </tbody>
@@ -320,11 +331,11 @@
     <!-- NOTE -->
     <div class="note-title">Note</div>
     <ul class="note-list">
-      <li>La quota di creazione (&euro;700,00) e dovuta una sola volta al momento dell'avvio del progetto.</li>
-      <li>Il canone mensile di &euro;50,00 decorre dal mese successivo alla consegna del sito e si rinnova automaticamente.</li>
-      <li>Il canone mensile puo essere disdetto con un preavviso di 30 giorni.</li>
-      <li>I costi di dominio e hosting sono inclusi nel canone mensile salvo diversi accordi.</li>
-      <li>Il preventivo e valido per 30 giorni dalla data di emissione.</li>
+      <li>La quota di creazione (&euro;700,00) &egrave; dovuta una sola volta al momento dell&rsquo;avvio del progetto.</li>
+      <li>La fee mensile di &euro;50,00 decorre dal mese successivo alla consegna del sito e si rinnova automaticamente.</li>
+      <li>La fee mensile pu&ograve; essere disdetta con un preavviso di 30 giorni.</li>
+      <li>I costi di dominio e hosting sono inclusi nella fee mensile salvo diversi accordi.</li>
+      <li>Il preventivo &egrave; valido per 30 giorni dalla data di emissione.</li>
     </ul>
 
     <!-- FIRME -->
@@ -348,7 +359,7 @@
   <!-- PAGE FOOTER -->
   <div class="page-footer">
     <table class="pf-table"><tr>
-      <td>AP media &ndash; alessandropacelli717@gmail.com</td>
+      <td>AP media &ndash; ale.pacelli@apmediagency.com</td>
       <td class="r">Pagina 1 di 1</td>
     </tr></table>
   </div>
