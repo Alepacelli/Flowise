@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Preventivo N 016 – AP media</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: #222;
+      background: #fff;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 0 0 10mm 0;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #1e2d4a;
+      color: #fff;
+      padding: 20px 28px 16px;
+      margin-bottom: 18px;
+    }
+    .header table { width: 100%; border-collapse: collapse; }
+    .header td { vertical-align: top; padding: 0; border: none; background: transparent; }
+    .header .brand h1 { font-size: 24px; font-weight: 700; letter-spacing: 1px; color: #fff; }
+    .header .brand p  { font-size: 10px; color: #b0c0d8; margin-top: 3px; }
+    .header .doc-info { text-align: right; }
+    .header .doc-info .doc-title  { font-size: 20px; font-weight: 700; letter-spacing: 2px; color: #fff; }
+    .header .doc-info .doc-number { font-size: 11px; color: #b0c0d8; margin-top: 4px; }
+
+    /* ── PAGE BODY ── */
+    .body { padding: 0 28px; }
+
+    /* ── INFO ROW ── */
+    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    .info-table td { vertical-align: top; padding: 0; border: none; }
+    .info-table td:first-child { padding-right: 12px; }
+    .info-box {
+      border: 1px solid #d8dde6;
+      border-radius: 4px;
+      padding: 11px 14px;
+      width: 100%;
+    }
+    .info-box .lbl { font-size: 9px; text-transform: uppercase; color: #888; letter-spacing: 1px; margin-bottom: 5px; }
+    .info-box .val { font-size: 13px; font-weight: 700; color: #222; }
+    .info-box .sub { font-size: 11px; color: #555; margin-top: 2px; }
+    .info-box .drow { font-size: 11px; line-height: 1.9; color: #222; }
+    .info-box .drow strong { font-weight: 700; }
+
+    /* ── INTRO ── */
+    .intro { font-size: 10px; font-style: italic; color: #555; margin-bottom: 20px; line-height: 1.6; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e2d4a;
+      border-bottom: 2px solid #1e2d4a;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    /* ── STAT BOXES ── */
+    .stat-table { width: 100%; border-collapse: collapse; margin-bottom: 22px; }
+    .stat-table td { vertical-align: top; padding: 0; border: none; }
+    .stat-table td:not(:last-child) { padding-right: 10px; }
+    .stat-box {
+      background: #dce7f5;
+      border-radius: 4px;
+      text-align: center;
+      padding: 16px 8px 12px;
+      width: 100%;
+    }
+    .stat-box .num  { font-size: 36px; font-weight: 700; color: #1e2d4a; line-height: 1; }
+    .stat-box .desc { font-size: 10px; color: #444; margin-top: 6px; }
+
+    /* ── DATA TABLES ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 22px;
+    }
+    .data-table thead tr { background: #1e2d4a; }
+    .data-table thead th {
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-align: left;
+      border: none;
+    }
+    .data-table thead th.r { text-align: right; }
+    .data-table tbody tr { border-bottom: 1px solid #e5e9f0; }
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody td {
+      padding: 9px 12px;
+      vertical-align: top;
+      border: none;
+      background: #fff;
+      color: #222;
+    }
+    .data-table tbody td.bold { font-weight: 700; }
+    .data-table tbody td.r    { text-align: right; white-space: nowrap; }
+
+    .totale-row td {
+      background: #1e2d4a !important;
+      color: #fff !important;
+      font-weight: 700 !important;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-bottom: none !important;
+    }
+    .totale-row td.r { text-align: right; white-space: nowrap; }
+
+    /* ── NOTE ── */
+    .note-title { font-size: 13px; font-weight: 700; color: #1e2d4a; margin-bottom: 7px; }
+    .note-list { list-style: none; padding: 0; margin-bottom: 28px; }
+    .note-list li {
+      font-size: 10px; color: #444; line-height: 1.7;
+      padding-left: 12px; position: relative;
+    }
+    .note-list li::before { content: "\2022"; position: absolute; left: 0; }
+
+    /* ── FIRME ── */
+    .sig-table { width: 100%; border-collapse: collapse; margin-top: 28px; }
+    .sig-table td { vertical-align: top; width: 50%; border: none; padding: 0; }
+    .sig-top { border-top: 1px solid #ccc; padding-top: 10px; }
+    .sig-name { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+    .sig-sub  { font-size: 10px; color: #555; }
+    .sig-line {
+      font-size: 10px; color: #555; margin-top: 22px;
+      border-bottom: 1px solid #999; padding-bottom: 2px;
+      width: 90%;
+    }
+
+    /* ── PAGE FOOTER ── */
+    .page-footer {
+      margin-top: 24px;
+      padding: 8px 28px 0;
+      border-top: 1px solid #e0e0e0;
+      font-size: 9px;
+      color: #888;
+    }
+    .pf-table { width: 100%; border-collapse: collapse; }
+    .pf-table td { border: none; padding: 0; background: transparent; }
+    .pf-table td.r { text-align: right; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <table><tr>
+      <td class="brand">
+        <h1>AP media</h1>
+        <p>Comunicazione &amp; Marketing Digitale</p>
+      </td>
+      <td class="doc-info">
+        <div class="doc-title">PREVENTIVO</div>
+        <div class="doc-number">N 016 &ndash; Giugno 2026</div>
+      </td>
+    </tr></table>
+  </div>
+
+  <div class="body">
+
+    <!-- INFO ROW -->
+    <table class="info-table"><tr>
+      <td style="width:48%">
+        <div class="info-box">
+          <div class="lbl">Destinatario</div>
+          <div class="val">Gallo Linea Bagno</div>
+          <div class="sub">Servizio: Gestione Meta Ads</div>
+        </div>
+      </td>
+      <td style="width:52%">
+        <div class="info-box">
+          <div class="lbl">Dettagli</div>
+          <div class="drow">Data emissione: <strong>25 Giugno 2026</strong></div>
+          <div class="drow">Periodo: <strong>Luglio &ndash; Settembre 2026 (3 mesi)</strong></div>
+          <div class="drow">Validita: <strong>30 giorni</strong></div>
+        </div>
+      </td>
+    </tr></table>
+
+    <!-- INTRO -->
+    <p class="intro">Preventivo per la gestione mensile della campagna pubblicitaria Meta Ads (Facebook &amp; Instagram) del brand Gallo Linea Bagno. Include strategia, gestione operativa, ottimizzazione e reportistica.</p>
+
+    <!-- STRUTTURA MENSILE -->
+    <div class="section-title">Struttura mensile del servizio</div>
+    <table class="stat-table"><tr>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">1</div>
+          <div class="desc">account Meta gestito</div>
+        </div>
+      </td>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">4</div>
+          <div class="desc">ottimizzazioni / mese</div>
+        </div>
+      </td>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">1</div>
+          <div class="desc">report mensile performance</div>
+        </div>
+      </td>
+    </tr></table>
+
+    <!-- SERVIZI -->
+    <div class="section-title">Dettaglio servizi inclusi</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Servizio</th>
+          <th>Descrizione</th>
+          <th class="r">Frequenza</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">Strategia campagne</td>
+          <td>Definizione obiettivi, target audience e struttura campagne</td>
+          <td class="r">mensile</td>
+        </tr>
+        <tr>
+          <td class="bold">Gestione inserzioni</td>
+          <td>Creazione, configurazione e pubblicazione degli ads</td>
+          <td class="r">continua</td>
+        </tr>
+        <tr>
+          <td class="bold">Ottimizzazione budget</td>
+          <td>Monitoraggio spesa, A/B test e aggiustamento targeting</td>
+          <td class="r">settimanale</td>
+        </tr>
+        <tr>
+          <td class="bold">Report performance</td>
+          <td>Analisi risultati con metriche chiave (ROAS, CPM, CTR)</td>
+          <td class="r">mensile</td>
+        </tr>
+        <tr>
+          <td class="bold">Consulenza strategica</td>
+          <td>Call mensile di allineamento e aggiornamento strategia</td>
+          <td class="r">mensile</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- RIEPILOGO -->
+    <div class="section-title">Riepilogo economico</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Voce</th>
+          <th>Dettaglio</th>
+          <th class="r">Importo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">Gestione Meta Ads mensile</td>
+          <td>Strategia + gestione + ottimizzazione + report + consulenza</td>
+          <td class="r">&euro;200,00</td>
+        </tr>
+        <tr>
+          <td class="bold">Durata del contratto</td>
+          <td>Luglio / Agosto / Settembre 2026</td>
+          <td class="r">x 3</td>
+        </tr>
+        <tr class="totale-row">
+          <td></td>
+          <td class="r">TOTALE TRIMESTRALE</td>
+          <td class="r">&euro;600,00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- NOTE -->
+    <div class="note-title">Note</div>
+    <ul class="note-list">
+      <li>Il presente preventivo non include il budget pubblicitario da destinare alle campagne Meta Ads, a carico del cliente.</li>
+      <li>Il servizio comprende la gestione di un account Meta Business e delle relative campagne attive nel periodo indicato.</li>
+      <li>Le ottimizzazioni settimanali includono aggiustamenti di targeting, creativita e distribuzione del budget.</li>
+      <li>Il preventivo e valido per 30 giorni dalla data di emissione.</li>
+    </ul>
+
+    <!-- FIRME -->
+    <table class="sig-table"><tr>
+      <td style="padding-right:20px">
+        <div class="sig-top">
+          <div class="sig-name">AP media</div>
+          <div class="sig-sub">Alessandro Pacelli</div>
+        </div>
+      </td>
+      <td>
+        <div class="sig-top">
+          <div class="sig-name">Accettazione cliente</div>
+          <div class="sig-line">Firma e data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+      </td>
+    </tr></table>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <div class="page-footer">
+    <table class="pf-table"><tr>
+      <td>AP media &ndash; alessandropacelli717@gmail.com</td>
+      <td class="r">Pagina 1 di 1</td>
+    </tr></table>
+  </div>
+
+</div>
+</body>
+</html>
