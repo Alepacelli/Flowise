@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Preventivo N 019 – AP media</title>
+  <style>
+    @font-face { font-family: "Figtree"; src: url("fonts/Figtree-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Figtree"; src: url("fonts/Figtree-600.ttf"); font-weight: 600; }
+    @font-face { font-family: "Figtree"; src: url("fonts/Figtree-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Figtree"; src: url("fonts/Figtree-800.ttf"); font-weight: 800; }
+    @font-face { font-family: "Playfair Display"; src: url("fonts/PlayfairDisplay-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Playfair Display"; src: url("fonts/PlayfairDisplay-700.ttf"); font-weight: 700; }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    /* Colori del brand (dalla proposta GLB) */
+    :root {
+      --ink: #121312;
+      --green: #435816;
+      --accent: #94BA48;
+      --lime: #C6E880;
+      --soft: #E6EED3;
+      --cream: #F9F8F6;
+      --sand: #F1EFEA;
+      --line: #E2DFD7;
+      --text: #4C4D4A;
+      --muted: #77776F;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Figtree", Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 0 0 8mm 0;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--ink);
+      color: #fff;
+      padding: 16px 26px 13px;
+      margin-bottom: 14px;
+      border-bottom: 4px solid var(--accent);
+    }
+    .header table { width: 100%; border-collapse: collapse; }
+    .header td { vertical-align: top; padding: 0; border: none; background: transparent; }
+    .header .brand h1 { font-size: 23px; font-weight: 800; letter-spacing: 0.5px; color: #fff; }
+    .header .brand p  { font-size: 9.5px; color: var(--lime); margin-top: 2px; }
+    .header .doc-info { text-align: right; }
+    .header .doc-info .doc-title  { font-size: 19px; font-weight: 800; letter-spacing: 2px; color: #fff; }
+    .header .doc-info .doc-number { font-size: 10px; color: var(--lime); margin-top: 3px; }
+
+    /* ── PAGE BODY ── */
+    .body { padding: 0 26px; }
+
+    /* ── INFO ROW ── */
+    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 11px; }
+    .info-table td { vertical-align: top; padding: 0; border: none; }
+    .info-table td:first-child { padding-right: 10px; }
+    .info-box {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 9px 13px;
+      width: 100%;
+      height: 88px;
+    }
+    .info-box .lbl { font-size: 8.5px; font-weight: 700; text-transform: uppercase; color: var(--green); letter-spacing: 1px; margin-bottom: 4px; }
+    .info-box .val { font-size: 13px; font-weight: 700; color: var(--ink); }
+    .info-box .sub { font-size: 10.5px; color: var(--text); margin-top: 2px; }
+    .info-box .drow { font-size: 10.5px; line-height: 1.8; color: var(--text); }
+    .info-box .drow strong { font-weight: 700; color: var(--ink); }
+
+    /* ── INTRO ── */
+    .intro { font-size: 9.5px; font-style: italic; color: var(--muted); margin-bottom: 12px; line-height: 1.55; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      border-bottom: 2px solid var(--green);
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+
+    /* ── STAT BOXES ── */
+    .stat-table { width: 100%; border-collapse: collapse; margin-bottom: 13px; }
+    .stat-table td { vertical-align: middle; padding: 0; border: none; }
+    .stat-table td:not(:last-child) { padding-right: 9px; }
+    .stat-box {
+      background: var(--soft);
+      border-radius: 4px;
+      text-align: center;
+      padding: 11px 10px 9px;
+      width: 100%;
+    }
+    .stat-box .num  { font-size: 28px; font-weight: 800; color: var(--green); line-height: 1; }
+    .stat-box .desc { font-size: 9.5px; color: var(--text); margin-top: 5px; }
+
+    /* ── DATA TABLES ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 13px;
+    }
+    .data-table thead tr { background: var(--ink); }
+    .data-table thead th {
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      text-align: left;
+      border: none;
+    }
+    .data-table thead th.r { text-align: right; }
+    .data-table tbody tr { border-bottom: 1px solid var(--line); }
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody td {
+      padding: 6px 10px;
+      vertical-align: top;
+      border: none;
+      background: #fff;
+      color: var(--text);
+    }
+    .data-table tbody td.bold { font-weight: 700; color: var(--ink); }
+    .data-table tbody td.r    { text-align: right; white-space: nowrap; color: var(--ink); }
+    .data-table tbody td.free { color: var(--green); font-weight: 700; }
+
+    .totale-row { background: var(--green); }
+    .totale-row td {
+      background: transparent !important;
+      color: #fff !important;
+      font-weight: 700 !important;
+      font-size: 12px;
+      padding: 8px 10px;
+      border-bottom: none !important;
+    }
+    .totale-row td.r { text-align: right; white-space: nowrap; }
+
+    .subtotale-row { background: var(--sand); }
+    .subtotale-row td {
+      background: transparent !important;
+      color: var(--ink) !important;
+      font-weight: 700 !important;
+      font-size: 10.5px;
+      padding: 7px 10px;
+      border-bottom: none !important;
+    }
+    .subtotale-row td.r { text-align: right; white-space: nowrap; }
+
+    /* ── NOTE ── */
+    .note-title { font-family: "Playfair Display", Georgia, serif; font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .note-list { list-style: none; padding: 0; margin-bottom: 4px; }
+    .note-list li {
+      font-size: 9.5px; color: var(--text); line-height: 1.55;
+      padding-left: 11px; position: relative;
+    }
+    .note-list li::before { content: "\2022"; position: absolute; left: 0; color: var(--accent); }
+
+    /* ── FIRME ── */
+    .sig-table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .sig-table td { vertical-align: top; width: 50%; border: none; padding: 9px 0 0 0; }
+    .sig-name { font-size: 10.5px; font-weight: 700; margin-bottom: 2px; color: var(--ink); }
+    .sig-sub  { font-size: 9.5px; color: var(--text); }
+    .sig-line {
+      font-size: 9.5px; color: var(--text); margin-top: 16px;
+      border-bottom: 1px solid var(--muted); padding-bottom: 2px;
+      width: 80%;
+    }
+
+    /* ── PAGE FOOTER ── */
+    .page-footer {
+      margin-top: 14px;
+      padding: 7px 26px 0;
+      border-top: 1px solid var(--line);
+      font-size: 8.5px;
+      color: var(--muted);
+    }
+    .pf-table { width: 100%; border-collapse: collapse; }
+    .pf-table td { border: none; padding: 0; background: transparent; }
+    .pf-table td.r { text-align: right; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <table><tr>
+      <td class="brand">
+        <h1>AP media</h1>
+        <p>Comunicazione &amp; Marketing Digitale</p>
+      </td>
+      <td class="doc-info">
+        <div class="doc-title">PREVENTIVO</div>
+        <div class="doc-number">N 019 &ndash; Ottobre 2026</div>
+      </td>
+    </tr></table>
+  </div>
+
+  <div class="body">
+
+    <!-- INFO ROW -->
+    <table class="info-table"><tr>
+      <td style="width:48%">
+        <div class="info-box">
+          <div class="lbl">Destinatario</div>
+          <div class="val">Gallo Linea Bagno</div>
+          <div class="sub">Servizio: Gestione ads integrata</div>
+        </div>
+      </td>
+      <td style="width:52%">
+        <div class="info-box">
+          <div class="lbl">Dettagli</div>
+          <div class="drow">Data emissione: <strong>8 Ottobre 2026</strong></div>
+          <div class="drow">Periodo: <strong>3 mesi, con verifica a 90 giorni</strong></div>
+          <div class="drow">Validit&agrave;: <strong>30 giorni</strong></div>
+        </div>
+      </td>
+    </tr></table>
+
+    <!-- INTRO -->
+    <p class="intro">Preventivo relativo alla proposta di gestione ads per Gallo Linea Bagno: un solo sistema che accompagna il cliente dall&rsquo;annuncio alla firma. Meta Ads e Google Ads gestiti insieme, landing page dedicate e sistema anti-recessi, con lo stesso budget pubblicitario di oggi.</p>
+
+    <!-- STRUTTURA -->
+    <div class="section-title">Struttura del servizio</div>
+    <table class="stat-table"><tr>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">2</div>
+          <div class="desc">canali ads gestiti (Meta + Google)</div>
+        </div>
+      </td>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">2</div>
+          <div class="desc">landing page dedicate</div>
+        </div>
+      </td>
+      <td style="width:33.3%">
+        <div class="stat-box">
+          <div class="num">&euro;0</div>
+          <div class="desc">in pi&ugrave; di budget pubblicitario</div>
+        </div>
+      </td>
+    </tr></table>
+
+    <!-- SERVIZI -->
+    <div class="section-title">Dettaglio servizi inclusi</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Servizio</th>
+          <th>Descrizione</th>
+          <th class="r">Frequenza</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">Gestione Meta Ads</td>
+          <td>Gestione completa delle campagne, come oggi</td>
+          <td class="r">continua</td>
+        </tr>
+        <tr>
+          <td class="bold">Gestione Google Ads</td>
+          <td>Campagna Search vasca in doccia, solo Roma e provincia, in autonomia</td>
+          <td class="r">continua</td>
+        </tr>
+        <tr>
+          <td class="bold">Creazione landing page</td>
+          <td>2 landing dedicate (chi cerca il prezzo, chi cerca di chi fidarsi)</td>
+          <td class="r">primo mese</td>
+        </tr>
+        <tr>
+          <td class="bold">Test e manutenzione landing</td>
+          <td>Un test al mese per aumentare le conversioni, filtro zona attivo</td>
+          <td class="r">mensile</td>
+        </tr>
+        <tr>
+          <td class="bold">Video con Giancarlo</td>
+          <td>Registrazione dei contenuti, come oggi</td>
+          <td class="r">mensile</td>
+        </tr>
+        <tr>
+          <td class="bold">Sistema anti-recessi</td>
+          <td>Video pre-sopralluogo e pagina post-modulo con recensioni e video recensioni</td>
+          <td class="r free">gratuito</td>
+        </tr>
+        <tr>
+          <td class="bold">Report per canale</td>
+          <td>Costo per sopralluogo e per contratto, incluso cosa non ha funzionato</td>
+          <td class="r">mensile</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- RIEPILOGO -->
+    <div class="section-title">Riepilogo economico</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Voce</th>
+          <th>Cosa copre</th>
+          <th class="r">Primo mese</th>
+          <th class="r">Dal 2&deg; mese</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">Meta Ads</td>
+          <td>Gestione completa, come oggi</td>
+          <td class="r">&euro;200,00</td>
+          <td class="r">&euro;200,00</td>
+        </tr>
+        <tr>
+          <td class="bold">Google Ads</td>
+          <td>Gestione completa, in autonomia</td>
+          <td class="r">&euro;200,00</td>
+          <td class="r">&euro;200,00</td>
+        </tr>
+        <tr>
+          <td class="bold">Landing page</td>
+          <td>Creazione delle 2 landing, poi test e manutenzione</td>
+          <td class="r">&euro;300,00</td>
+          <td class="r">&euro;150,00</td>
+        </tr>
+        <tr>
+          <td class="bold">Video con Giancarlo</td>
+          <td>Registrazione dei contenuti, come oggi</td>
+          <td class="r">&euro;50,00</td>
+          <td class="r">&euro;50,00</td>
+        </tr>
+        <tr>
+          <td class="bold">Anti-recessi</td>
+          <td>Consulenza dal valore di oltre &euro;700</td>
+          <td class="r free">Gratuito</td>
+          <td class="r free">Gratuito</td>
+        </tr>
+        <tr class="subtotale-row">
+          <td></td>
+          <td class="r">TOTALE MENSILE</td>
+          <td class="r">&euro;750,00</td>
+          <td class="r">&euro;600,00</td>
+        </tr>
+        <tr class="totale-row">
+          <td></td>
+          <td class="r" colspan="2">TOTALE PRIMI 3 MESI</td>
+          <td class="r">&euro;1.950,00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- NOTE -->
+    <div class="note-title">Note</div>
+    <ul class="note-list">
+      <li>Il budget pubblicitario non &egrave; incluso: resta invariato rispetto a oggi ed &egrave; a carico del cliente.</li>
+      <li>Il sistema anti-recessi (valore oltre &euro;700) &egrave; offerto gratuitamente e resta di propriet&agrave; del cliente.</li>
+      <li>Gli account Google Ads e Meta restano del cliente: fatturazione e propriet&agrave; non cambiano, scollegabili in qualsiasi momento.</li>
+      <li>A fine terzo mese si confrontano costo per sopralluogo e costo per contratto con il punto di partenza.</li>
+      <li>Il preventivo &egrave; valido per 30 giorni dalla data di emissione.</li>
+    </ul>
+
+    <!-- FIRME -->
+    <table class="sig-table"><tr>
+      <td style="padding-right:20px">
+        <div class="sig-name">AP media</div>
+        <div class="sig-sub">Alessandro Pacelli</div>
+      </td>
+      <td>
+        <div class="sig-name">Accettazione cliente</div>
+        <div class="sig-line">Firma e data:&nbsp;</div>
+      </td>
+    </tr></table>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <div class="page-footer">
+    <table class="pf-table"><tr>
+      <td>AP media &ndash; ale.pacelli@apmediagency.com</td>
+      <td class="r">Pagina 1 di 1</td>
+    </tr></table>
+  </div>
+
+</div>
+</body>
+</html>
