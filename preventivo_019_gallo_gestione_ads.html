@@ -96,19 +96,28 @@
       margin-bottom: 8px;
     }
 
-    /* ── STAT BOXES ── */
-    .stat-table { width: 100%; border-collapse: collapse; margin-bottom: 13px; }
-    .stat-table td { vertical-align: middle; padding: 0; border: none; }
-    .stat-table td:not(:last-child) { padding-right: 9px; }
-    .stat-box {
-      background: var(--soft);
+    /* ── FASI ── */
+    .phase-table { width: 100%; border-collapse: collapse; margin-bottom: 13px; }
+    .phase-table td { vertical-align: top; padding: 0; border: none; }
+    .phase-table td:not(:last-child) { padding-right: 9px; }
+    .phase {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--green);
       border-radius: 4px;
-      text-align: center;
-      padding: 11px 10px 9px;
+      padding: 9px 12px 10px;
       width: 100%;
+      height: 102px;
     }
-    .stat-box .num  { font-size: 28px; font-weight: 800; color: var(--green); line-height: 1; }
-    .stat-box .desc { font-size: 9.5px; color: var(--text); margin-top: 5px; }
+    .phase .step { font-size: 8px; font-weight: 700; letter-spacing: 1.2px; color: var(--accent); }
+    .phase .name { font-family: "Playfair Display", Georgia, serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-top: 2px; }
+    .phase .what { font-size: 10px; font-weight: 700; color: var(--green); margin-top: 3px; }
+    .phase .why  { font-size: 9px; color: var(--text); line-height: 1.45; margin-top: 3px; }
+    .phase .tag {
+      font-size: 7.5px; font-weight: 700; letter-spacing: 0.8px;
+      background: var(--lime); color: var(--green);
+      padding: 2px 6px; border-radius: 8px; margin-left: 5px;
+    }
 
     /* ── DATA TABLES ── */
     .data-table {
@@ -241,25 +250,31 @@
     <!-- INTRO -->
     <p class="intro">Preventivo relativo alla proposta di gestione ads per Gallo Linea Bagno: un solo sistema che accompagna il cliente dall&rsquo;annuncio alla firma. Meta Ads e Google Ads gestiti insieme, landing page dedicate e sistema anti-recessi, con lo stesso budget pubblicitario di oggi.</p>
 
-    <!-- STRUTTURA -->
-    <div class="section-title">Struttura del servizio</div>
-    <table class="stat-table"><tr>
+    <!-- FASI -->
+    <div class="section-title">Il sistema in tre fasi</div>
+    <table class="phase-table"><tr>
       <td style="width:33.3%">
-        <div class="stat-box">
-          <div class="num">2</div>
-          <div class="desc">canali ads gestiti (Meta + Google)</div>
+        <div class="phase">
+          <div class="step">FASE 01</div>
+          <div class="name">Attira</div>
+          <div class="what">Meta Ads + Google Ads</div>
+          <div class="why">Un solo responsabile, un solo obiettivo: il costo per contratto.</div>
         </div>
       </td>
       <td style="width:33.3%">
-        <div class="stat-box">
-          <div class="num">2</div>
-          <div class="desc">landing page dedicate</div>
+        <div class="phase">
+          <div class="step">FASE 02</div>
+          <div class="name">Converti</div>
+          <div class="what">2 landing page dedicate</div>
+          <div class="why">Una pagina per ogni tipo di ricerca, solo Roma e provincia.</div>
         </div>
       </td>
       <td style="width:33.3%">
-        <div class="stat-box">
-          <div class="num">&euro;0</div>
-          <div class="desc">in pi&ugrave; di budget pubblicitario</div>
+        <div class="phase">
+          <div class="step">FASE 03 <span class="tag">GRATUITO</span></div>
+          <div class="name">Chiudi</div>
+          <div class="what">Sistema anti-recessi</div>
+          <div class="why">Il cliente arriva al sopralluogo con le aspettative giuste.</div>
         </div>
       </td>
     </tr></table>
